@@ -11,41 +11,42 @@
 
         /* Section 1 */   
 
-        var name = "Joe";
-        var city = 'London';
-        var age = 32;
-        var isRed = true;
-        var isOld = age > 80;
+        var name = "Joe"; // variable name de type string "joe"
+        var city = 'London'; // variable city de type string "London"
+        var age = 32; // variable age de type entier
+        var isRed = true; // variable isred de type booléen
+        var isOld = age > 80; // variable isOld de type entier
 
-        var previousJobs = ['lawyer', 'developper', 'Professionnal climber'];
+        var previousJobs = ['lawyer', 'developper', 'Professionnal climber'];  // variable previousjob de type tableau de string
 
-        function info(height, weight) {
+        function info(height, weight) { // fontion info avec hauteur et poids en paramètres
             if (height > 180) {
-                console.log('Vous êtes grand');
+                console.log('Vous êtes grand');  // si hauteur est supérieur à 180 imprimer 'Vous êtes grand'
             }
             if (weight < 0) {
-                console.log('oups, there is a problem');
+                console.log('oups, there is a problem'); // si poid est inférieur à 0 imprimer 'oups, there is a problem'
             } else if ( weight < 15) {
-                console.log('Are you that slim ?')
+                console.log('Are you that slim ?') // si poids inférieur à 15 imprimer  'Are you that slim ?'
             } else {
-                console.log('Good !')
+                console.log('Good !') // sinon, imprimer 'Good !'
             }
         }
 
-        info(165, 45);
+        info(165, 45);   // utilisation de la  fontion info avec 165 en paramètre hauteur et 45 en paramètre poids
 
-        var myHeight = 175;
-        var myWeight = 86;
+        var myHeight = 175; // déclaration de variable ma hauteur = 175
+        var myWeight = 86; // déclaration de variable mon poid = 86
 
-        info(myHeight, myWeight);
+        info(myHeight, myWeight); // utilisation de la fonction info avec les variables déclarées au dessus
 
-        info(myHeight + 15, myWeight - 100);
+        info(myHeight + 15, myWeight - 100); // utilisation de la fonction info avec les variables déclarées au dessus +15 en hauteur et -100 en poids
 
-        function toUpper(variable) {
+
+        function toUpper(variable) { // décaration de fonction toUpper qui retourne la varable toUpperCase
             return variable.toUpperCase();
         }
 
-        var upperName = toUpper(name);
+        var upperName = toUpper(name); // déclaration de variable upperName qui appelle la fonction toUpper avec Name en paramètre
 
         for (i = 0; i < 3; i = i + 1) {
             console.log(previousJobs[i]);
@@ -53,13 +54,19 @@
 
         /* Section 2: */
 
-        // afficher la ville dans laquele Joe vit.     
+        // afficher la ville dans laquelle Joe vit.
+
+// function location (city) {
+//     console.log (city)
+//
+//     location(city)
+// }
 
         // afficher si Joe est roux ou pas.
 
         /* Section 3 */
 
-        // console.log(myVariable);
+         console.log(myVariable);
 
         </script>
 
