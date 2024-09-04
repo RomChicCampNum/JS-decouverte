@@ -26,48 +26,73 @@ console.log(joeInfo.garage);  // Afficher la nouvelle valeur du garage
 // Partie 2
 
 //Équipe de Manchester City (Football)
-
 const team = {
-    players: [],
-    games: [],
-    addPlayer(firstName, lastName, age) {
-        this.players.push({ firstName, lastName, age });
+    players: [
+        { firstName: "Kevin", lastName: "De Bruyne", age: 32 },
+        { firstName: "Erling", lastName: "Haaland", age: 23 },
+        { firstName: "Phil", lastName: "Foden", age: 24 },
+        { firstName: "Ruben", lastName: "Dias", age: 26 },
+    ],
+    games: [
+        { opponent: "Arsenal", teamPoints: 3, opponentPoints: 1 },
+        { opponent: "Liverpool", teamPoints: 2, opponentPoints: 2 },
+        { opponent: "Manchester United", teamPoints: 1, opponentPoints: 0 },
+    ],
+    addPlayer: function(firstName, lastName, age) {
+        this.players.push({ firstName: firstName, lastName: lastName, age: age });
     },
-    addGame(opponent, teamPoints, opponentPoints) {
-        this.games.push({ opponent, teamPoints, opponentPoints });
+    addGame: function(opponent, teamPoints, opponentPoints) {
+        this.games.push({ opponent: opponent, teamPoints: teamPoints, opponentPoints: opponentPoints });
     }
 };
 
-// Joueurs et matchs
-team.addPlayer("Erling", "Haaland", 23);
-team.addPlayer("Kevin", "De Bruyne", 32);
-team.addPlayer("Phil", "Foden", 24);
-team.addPlayer("Rúben", "Dias", 27);
+// Ajout d'un nouveau joueur
 team.addPlayer("Jack", "Grealish", 28);
-team.addGame("Liverpool", 3, 1);
-team.addGame("Arsenal", 4, 2);
-team.addGame("Chelsea", 2, 0);
 
-// Ajouter joueur et match
-team.addPlayer("Bernardo", "Silva", 29);
-team.addGame("Tottenham", 5, 2);
+// Calcul de la somme des points de l'équipe
+function calculateTotalTeamPoints(games) {
+    return games.reduce(function(total, game) {
+        return total + game.teamPoints;
+    }, 0);
+}
 
-// Somme points équipe
-const totalTeamPoints = team.games.reduce((total, game) => total + game.teamPoints, 0);
-console.log(`Total des points de Manchester City: ${totalTeamPoints}`);
+const totalTeamPoints = calculateTotalTeamPoints(team.games);
+console.log("Total des points de Manchester City: " + totalTeamPoints);
 
-// Moyenne des points adversaires
-const totalOpponentPoints = team.games.reduce((total, game) => total + game.opponentPoints, 0);
-const averageOpponentPoints = totalOpponentPoints / team.games.length;
-console.log(`Moyenne des points des adversaires: ${averageOpponentPoints.toFixed(2)}`);
+// Calcul de la moyenne des points des adversaires
+function calculateAverageOpponentPoints(games) {
+    const totalOpponentPoints = games.reduce(function(total, game) {
+        return total + game.opponentPoints;
+    }, 0);
+    return totalOpponentPoints / games.length;
+}
 
-// Joueur le plus âgé
-const oldestPlayer = team.players.reduce((oldest, player) => {
-    return player.age > oldest.age ? player : oldest;
-}, team.players[0]);
-console.log(`Le joueur le plus âgé est: ${oldestPlayer.firstName} ${oldestPlayer.lastName}, âge: ${oldestPlayer.age}`);
+const averageOpponentPoints = calculateAverageOpponentPoints(team.games);
+console.log("Moyenne des points des adversaires: " + averageOpponentPoints.toFixed(2));
 
-// Ordre alphabétique
-team.players.sort((a, b) => a.lastName.localeCompare(b.lastName));
-console.log("Joueurs de Manchester City triés par ordre alphabétique:");
-console.log(team.players);
+// Trouver le joueur le plus âgé
+function findOldestPlayer(players) {
+    return players.reduce(function(oldest, player) {
+        return player.age > oldest.age ? player : oldest;
+    }, players[0]);
+}
+
+const oldestPlayer = findOldestPlayer(team.players);
+console.log("Le joueur le plus âgé est: " + oldestPlayer.firstName + " " + oldestPlayer.lastName);
+
+// Tri des joueurs par ordre alphabétique
+function sortPlayersAlphabetically(players) {
+    return players.sort(function(a, b) {
+        if (a.lastName < b.lastName) {
+            return -1;
+        }
+        if (a.lastName > b.lastName) {
+            return 1;
+        }
+        return 0;
+    });
+}
+
+const sortedPlayers = sortPlayersAlphabetically(team.players);
+console.log("Joueurs triés par ordre alphabétique:", sortedPlayers);
+
