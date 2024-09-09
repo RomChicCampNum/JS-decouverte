@@ -7,8 +7,23 @@
 
   <body>
     <div class="container">
-						<h1>Exercice 7</h1>
-				</div>
+		<h1>Exercice 7</h1>
+
+      <!-- Champ texte pour entrer le type d'article -->
+      <input type="text" id="typeInput" placeholder="Entrez un type d'article">
+
+      <!-- Bouton pour déclencher le filtrage des articles -->
+      <button id="filterButton">Afficher les articles</button>
+
+      <label>
+        <input type="checkbox" id="showOutOfStock" />
+        Afficher les articles en rupture de stock
+      </label>
+
+      <!-- Liste où les articles seront affichés -->
+      <div id="articles-list"></div>
+    </div>
+
     <script src="datas.js"></script>
     <script src="exo7.js"></script>
   </body>
